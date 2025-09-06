@@ -1,20 +1,20 @@
-import CartItemDetails from "./cartItemDetails";
-import DeliveryOptions from "./DeliveryOptions";
-import DeliveryDate from "./DeliveryDate";
+import CartItemDetails from './cartItemDetails'
+import  DeliveryOptions  from './DeliveryOptions';
+import  DeliveryDate  from './DeliveryDate';
 
-function OrderSummary({ cart, deliveryOptions }) {
+export function OrderSummary({ cart, deliveryOptions }) {
   return (
     <div className="order-summary">
       {deliveryOptions.length > 0 && cart.map((cartItem) => {
         return (
           <div key={cartItem.productId} className="cart-item-container">
-            <DeliveryDate cart={cart} deliveryOptions={deliveryOptions} />
+            <DeliveryDate cartItem={cartItem} deliveryOptions={deliveryOptions} />
             <div className="cart-item-details-grid">
               <CartItemDetails cartItem={cartItem} />
               <DeliveryOptions cartItem={cartItem} deliveryOptions={deliveryOptions} />
             </div>
           </div>
-        )
+        );
       })}
     </div>
   );
