@@ -5,6 +5,8 @@ import ProductsGrid from './productsGrid'
 import "./HomePage.css"
 
 function HomePage({ cart , loadCart }) {
+
+  window.axios = axios;
   const [products, setProducts] = useState([])
 
   useEffect(() => {

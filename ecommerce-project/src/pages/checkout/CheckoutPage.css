@@ -208,3 +208,10 @@
   margin-top: 20px;
   margin-bottom: 19px;
 }
+.quantity-number{
+  width: 50px;
+  margin-inline: 6px;
+}
+.quantity-number-hide{
+  display: none;
+}

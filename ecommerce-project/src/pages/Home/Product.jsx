@@ -4,20 +4,25 @@ import axios from "axios";
 import CheckMark from '../../assets/images/icons/checkmark.png'
 
 
-function Product({product , loadCart}) {
+function Product({ product, loadCart }) {
+  const [productOpacity , setProductOpacity] = useState(false);
   const [quantity, SetQuantity] = useState(1);
 
   const addToCart = async () => {
-          await axios.post('/api/cart-items', {
-            productId: product.id,
-            quantity
-          })
-          await loadCart();
-        }
+    await axios.post('/api/cart-items', {
+      productId: product.id,
+      quantity
+    })
+    await loadCart();
+    setProductOpacity(true)
+    setTimeout(() => { 
+      setProductOpacity(false)
+    } , 2000)
+  }
   const selectQuantity = (event) => {
-          const quantitySelected = Number(event.target.value);
-          SetQuantity(quantitySelected);
-        }      
+    const quantitySelected = Number(event.target.value);
+    SetQuantity(quantitySelected);
+  }
 
   return (
     <div key={product.id} className="product-container">
@@ -59,7 +64,7 @@ function Product({product , loadCart}) {
 
       <div className="product-spacer"></div>
 
-      <div className="added-to-cart">
+      <div className="added-to-cart" style={{opacity: productOpacity ? 1 : 0}}>
         <img src={CheckMark} />
         Added
       </div>
